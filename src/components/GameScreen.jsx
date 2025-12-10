@@ -141,38 +141,41 @@ function GameScreen({
         style={{ position: 'fixed' }}
       ></div>
       
+      {/* X 버튼 (닫기 버튼) - 화면 우측 상단 고정 */}
+      <button
+        onClick={() => setShowQuitModal(true)}
+        className="
+          fixed top-4 right-4 md:top-6 md:right-6
+          w-10 h-10 md:w-12 md:h-12
+          flex items-center justify-center
+          rounded-full bg-white/90 hover:bg-white
+          text-gray-700 hover:text-gray-900
+          transition-all duration-200
+          hover:scale-110 active:scale-95
+          shadow-lg hover:shadow-xl
+          z-50
+          border-2 border-gray-200 hover:border-gray-300
+        "
+        aria-label="게임 중단"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="h-6 w-6 md:h-7 md:w-7" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+          strokeWidth={2.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
       {/* 콘텐츠 */}
       <div className="relative z-10 min-h-screen py-8 px-5 md:px-10 lg:px-40">
         <div className="max-w-4xl mx-auto lg:max-w-2xl">
           {/* 상단 정보 영역 */}
-          <div className="bg-white/90 rounded-lg p-6 mb-6 shadow-lg relative">
-            {/* X 버튼 (닫기 버튼) */}
-            <button
-              onClick={() => setShowQuitModal(true)}
-              className="
-                absolute top-4 right-4
-                w-8 h-8 flex items-center justify-center
-                rounded-full bg-gray-200 hover:bg-gray-300
-                text-gray-700 hover:text-gray-900
-                transition-all duration-200
-                hover:scale-110 active:scale-95
-                shadow-md hover:shadow-lg
-                z-10
-              "
-              aria-label="게임 중단"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            
-            <div className="flex flex-wrap items-center justify-between gap-4 pr-10">
+          <div className="bg-white/90 rounded-lg p-6 mb-6 shadow-lg">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-4">
                 <img 
                   src={characterImage} 
