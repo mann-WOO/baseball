@@ -141,12 +141,9 @@ function GameScreen({
                   src={characterImage} 
                   alt={`${selectedCharacter} 캐릭터`} 
                   className="w-12 h-12 object-contain"
-                  style={selectedCharacter === CHARACTERS.SOL 
-                    ? { 
-                        filter: 'drop-shadow(0.5px 0 0 black) drop-shadow(-0.5px 0 0 black) drop-shadow(0 0.5px 0 black) drop-shadow(0 -0.5px 0 black) drop-shadow(0.5px 0.5px 0 black) drop-shadow(-0.5px -0.5px 0 black) drop-shadow(0.5px -0.5px 0 black) drop-shadow(-0.5px 0.5px 0 black)'
-                      }
-                    : {}
-                  }
+                  style={{ 
+                    filter: 'drop-shadow(0.3px 0 0 black) drop-shadow(-0.3px 0 0 black) drop-shadow(0 0.3px 0 black) drop-shadow(0 -0.3px 0 black) drop-shadow(0.3px 0.3px 0 black) drop-shadow(-0.3px -0.3px 0 black) drop-shadow(0.3px -0.3px 0 black) drop-shadow(-0.3px 0.3px 0 black)'
+                  }}
                 />
                 <div>
                   <div className="text-lg font-bold text-gray-800">
