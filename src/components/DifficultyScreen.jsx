@@ -29,8 +29,9 @@ function DifficultyScreen({ selectedCharacter, onDifficultySelect }) {
       <div className="absolute inset-0 bg-white opacity-50"></div>
       
       {/* 콘텐츠 */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
-        {/* 선택된 캐릭터 이미지 */}
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 md:px-10 lg:px-40">
+        <div className="w-full max-w-4xl lg:max-w-2xl mx-auto flex flex-col items-center">
+          {/* 선택된 캐릭터 이미지 */}
         <div className="mb-8">
           <img 
             src={characterImage} 
@@ -61,6 +62,7 @@ function DifficultyScreen({ selectedCharacter, onDifficultySelect }) {
               {difficulty.name} ({difficulty.maxAttempts}회)
             </button>
           ))}
+        </div>
         </div>
       </div>
     </div>

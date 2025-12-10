@@ -99,15 +99,32 @@ function GameScreen({
   
   const getResultColor = (resultText) => {
     if (resultText === '낫싱') {
-      return 'text-gray-600';
+      return 'text-gray-600'; // #999999에 가까운 색상
     }
     if (resultText.includes('S')) {
-      return 'text-red-600';
+      return 'text-red-600'; // #FF4444에 가까운 색상
     }
     if (resultText.includes('B')) {
-      return 'text-yellow-600';
+      return 'text-yellow-500'; // #FFD700에 가까운 색상
     }
     return 'text-gray-800';
+  };
+  
+  const getResultStyle = (resultText) => {
+    if (resultText === '낫싱') {
+      return { color: '#999999' };
+    }
+    if (resultText.includes('S') && resultText.includes('B')) {
+      // 스트라이크와 볼이 모두 있는 경우 스트라이크 색상 우선
+      return { color: '#FF4444' };
+    }
+    if (resultText.includes('S')) {
+      return { color: '#FF4444' };
+    }
+    if (resultText.includes('B')) {
+      return { color: '#FFD700' };
+    }
+    return { color: '#333333' };
   };
   
   return (
@@ -119,8 +136,8 @@ function GameScreen({
       <div className="absolute inset-0 bg-white opacity-30"></div>
       
       {/* 콘텐츠 */}
-      <div className="relative z-10 min-h-screen px-4 py-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="relative z-10 min-h-screen py-8 px-5 md:px-10 lg:px-40">
+        <div className="max-w-4xl mx-auto lg:max-w-2xl">
           {/* 상단 정보 영역 */}
           <div className="bg-white/90 rounded-lg p-6 mb-6 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -164,7 +181,10 @@ function GameScreen({
                       {attempt.guess}
                     </span>
                     <span className="text-2xl">→</span>
-                    <span className={`font-bold text-xl ${getResultColor(attempt.resultText)}`}>
+                    <span 
+                      className="font-bold text-xl"
+                      style={getResultStyle(attempt.resultText)}
+                    >
                       {attempt.resultText}
                     </span>
                   </div>
@@ -183,11 +203,15 @@ function GameScreen({
                 <input
                   id="guess-input"
                   type="text"
+                  inputMode="numeric"
                   value={input}
                   onChange={handleInputChange}
                   onKeyPress={handleKeyPress}
                   placeholder="예: 1234"
                   maxLength={4}
+                  aria-label="4자리 숫자 입력"
+                  aria-invalid={error ? 'true' : 'false'}
+                  aria-describedby={error ? 'error-message' : undefined}
                   className={`
                     w-full px-4 py-3 text-2xl text-center font-mono rounded-lg border-2
                     focus:outline-none focus:ring-2 focus:ring-blue-500
@@ -196,7 +220,7 @@ function GameScreen({
                   `}
                 />
                 {error && (
-                  <p className="mt-2 text-red-600 font-bold animate-shake">
+                  <p id="error-message" className="mt-2 text-red-600 font-bold animate-shake" role="alert">
                     {error}
                   </p>
                 )}
@@ -205,6 +229,7 @@ function GameScreen({
               <button
                 type="submit"
                 disabled={!isValid || input.length !== 4}
+                aria-label="숫자 제출"
                 className={`
                   w-full py-4 px-6 rounded-lg text-xl font-bold text-white
                   transition-all duration-300
