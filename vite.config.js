@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '127.0.0.1',
+    host: '0.0.0.0', // 모든 네트워크 인터페이스에서 접근 가능 (모바일 테스트용)
     strictPort: false,
   },
 })
