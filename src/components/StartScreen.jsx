@@ -37,9 +37,6 @@ function StartScreen({ onCharacterSelect }) {
                 src="/resources/sol.png" 
                 alt="SOL 캐릭터 선택" 
                 className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
-                style={{ 
-                  filter: 'drop-shadow(0.3px 0 0 black) drop-shadow(-0.3px 0 0 black) drop-shadow(0 0.3px 0 black) drop-shadow(0 -0.3px 0 black) drop-shadow(0.3px 0.3px 0 black) drop-shadow(-0.3px -0.3px 0 black) drop-shadow(0.3px -0.3px 0 black) drop-shadow(-0.3px 0.3px 0 black)'
-                }}
               />
               <div className="mt-4 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
@@ -57,9 +54,6 @@ function StartScreen({ onCharacterSelect }) {
                 src="/resources/moli.png" 
                 alt="MOLI 캐릭터 선택" 
                 className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
-                style={{ 
-                  filter: 'drop-shadow(0.3px 0 0 black) drop-shadow(-0.3px 0 0 black) drop-shadow(0 0.3px 0 black) drop-shadow(0 -0.3px 0 black) drop-shadow(0.3px 0.3px 0 black) drop-shadow(-0.3px -0.3px 0 black) drop-shadow(0.3px -0.3px 0 black) drop-shadow(-0.3px 0.3px 0 black)'
-                }}
               />
               <div className="mt-4 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
