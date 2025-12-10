@@ -27,7 +27,7 @@ function StartScreen({ onCharacterSelect }) {
           </h1>
           
           {/* 캐릭터 선택 버튼 */}
-          <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="flex flex-row gap-4 sm:gap-8 items-center justify-center flex-wrap">
             <button
               onClick={() => onCharacterSelect(CHARACTERS.SOL)}
               className="group relative transition-transform duration-300 hover:scale-105 active:scale-95"
@@ -36,10 +36,10 @@ function StartScreen({ onCharacterSelect }) {
               <img 
                 src="/resources/sol.png" 
                 alt="SOL 캐릭터 선택" 
-                className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
+                className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
               />
               <div className="mt-4 text-center">
-                <span className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                <span className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
                   SOL
                 </span>
               </div>
@@ -53,10 +53,10 @@ function StartScreen({ onCharacterSelect }) {
               <img 
                 src="/resources/moli.png" 
                 alt="MOLI 캐릭터 선택" 
-                className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
+                className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
               />
               <div className="mt-4 text-center">
-                <span className="text-2xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
+                <span className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
                   MOLI
                 </span>
               </div>

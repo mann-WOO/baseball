@@ -25,22 +25,23 @@ function GameScreen({
   const handleInputChange = (e) => {
     const value = e.target.value;
     // 숫자만 입력 가능, 최대 4자리
-    if (/^\d*$/.test(value) && value.length <= 4) {
-      setInput(value);
-      setError('');
-      
-      // 유효성 검사
-      if (value.length === 4) {
-        const validation = validateInput(value);
-        setIsValid(validation.valid);
-        if (!validation.valid) {
-          setError(validation.message);
-        } else {
-          setError('');
-        }
+    // 숫자가 아닌 문자는 자동으로 제거
+    const numericValue = value.replace(/\D/g, '').slice(0, 4);
+    
+    setInput(numericValue);
+    setError('');
+    
+    // 유효성 검사
+    if (numericValue.length === 4) {
+      const validation = validateInput(numericValue);
+      setIsValid(validation.valid);
+      if (!validation.valid) {
+        setError(validation.message);
       } else {
-        setIsValid(false);
+        setError('');
       }
+    } else {
+      setIsValid(false);
     }
   };
   
@@ -88,12 +89,6 @@ function GameScreen({
       setTimeout(() => {
         onGameEnd(gameStatus, currentAttempt + 1);
       }, 500);
-    }
-  };
-  
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && isValid) {
-      handleSubmit(e);
     }
   };
   
@@ -204,11 +199,17 @@ function GameScreen({
                   id="guess-input"
                   type="text"
                   inputMode="numeric"
+                  pattern="[0-9]*"
                   value={input}
                   onChange={handleInputChange}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && isValid && input.length === 4) {
+                      handleSubmit(e);
+                    }
+                  }}
                   placeholder="예: 1234"
                   maxLength={4}
+                  autoComplete="off"
                   aria-label="4자리 숫자 입력"
                   aria-invalid={error ? 'true' : 'false'}
                   aria-describedby={error ? 'error-message' : undefined}
