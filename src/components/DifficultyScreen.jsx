@@ -38,7 +38,9 @@ function DifficultyScreen({ selectedCharacter, onDifficultySelect }) {
             alt={`${selectedCharacter} 캐릭터`} 
             className="w-32 h-32 md:w-40 md:h-40 object-contain"
             style={selectedCharacter === CHARACTERS.SOL 
-              ? { filter: 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.8))' }
+              ? { 
+                  filter: 'drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black) drop-shadow(0 1px 0 black) drop-shadow(0 -1px 0 black) drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black)'
+                }
               : {}
             }
           />
