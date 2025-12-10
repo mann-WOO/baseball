@@ -20,10 +20,17 @@ function ResultScreen({
   return (
     <div 
       className="fixed inset-0 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(/resources/background.jpg)` }}
+      style={{ 
+        backgroundImage: `url(/resources/background.jpg)`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover'
+      }}
     >
       {/* 흰색 오버레이 70% 투명도 */}
-      <div className="absolute inset-0 bg-white opacity-70"></div>
+      <div 
+        className="absolute inset-0 bg-white opacity-70"
+        style={{ position: 'fixed' }}
+      ></div>
       
       {/* 콘텐츠 */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 md:px-10 lg:px-40 animate-fadeIn">

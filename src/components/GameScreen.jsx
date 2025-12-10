@@ -125,10 +125,17 @@ function GameScreen({
   return (
     <div 
       className="fixed inset-0 bg-cover bg-center bg-no-repeat overflow-y-auto"
-      style={{ backgroundImage: `url(/resources/background.jpg)` }}
+      style={{ 
+        backgroundImage: `url(/resources/background.jpg)`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover'
+      }}
     >
       {/* 흰색 오버레이 30% 투명도 */}
-      <div className="absolute inset-0 bg-white opacity-30"></div>
+      <div 
+        className="absolute inset-0 bg-white opacity-30"
+        style={{ position: 'fixed' }}
+      ></div>
       
       {/* 콘텐츠 */}
       <div className="relative z-10 min-h-screen py-8 px-5 md:px-10 lg:px-40">

@@ -20,6 +20,35 @@ body {
   width: 100%;
 }
 
+/* 모바일에서 hover 효과 비활성화 */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* 모바일에서 hover로 인한 transform 효과 제거 */
+  button:hover,
+  button:focus:not(:active),
+  .group:hover button {
+    transform: none !important;
+    scale: 1 !important;
+  }
+  
+  /* group-hover 효과도 비활성화 */
+  .group:hover *,
+  .group:hover span {
+    transform: none !important;
+    color: inherit !important;
+  }
+  
+  /* hover:scale-105 효과 제거 */
+  button:hover {
+    transform: scale(1) !important;
+  }
+  
+  /* hover:bg-* 효과는 유지 (색상 변경은 괜찮음) */
+}
+
 /* 애니메이션 */
 @keyframes fadeIn {
   from {
