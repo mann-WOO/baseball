@@ -115,6 +115,8 @@ function App() {
             currentAttempt={gameState.currentAttempt}
             onAttemptSubmit={handleAttemptSubmit}
             onGameEnd={handleGameEnd}
+            onQuitToMain={handleGoToMain}
+            onQuitRestart={handleRestart}
           />
         );
       

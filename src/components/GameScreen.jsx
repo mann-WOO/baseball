@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { validateInput, calculateResult, formatResult, determineGameStatus } from '../utils/gameLogic';
 import { DIFFICULTIES, CHARACTERS } from '../utils/gameConstants';
+import QuitGameModal from './QuitGameModal';
 
 function GameScreen({ 
   selectedCharacter, 
@@ -9,11 +10,14 @@ function GameScreen({
   attempts, 
   currentAttempt,
   onAttemptSubmit,
-  onGameEnd
+  onGameEnd,
+  onQuitToMain,
+  onQuitRestart
 }) {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [showQuitModal, setShowQuitModal] = useState(false);
   
   const characterImage = selectedCharacter === CHARACTERS.SOL 
     ? '/resources/sol.png' 
@@ -141,8 +145,34 @@ function GameScreen({
       <div className="relative z-10 min-h-screen py-8 px-5 md:px-10 lg:px-40">
         <div className="max-w-4xl mx-auto lg:max-w-2xl">
           {/* 상단 정보 영역 */}
-          <div className="bg-white/90 rounded-lg p-6 mb-6 shadow-lg">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-white/90 rounded-lg p-6 mb-6 shadow-lg relative">
+            {/* X 버튼 (닫기 버튼) */}
+            <button
+              onClick={() => setShowQuitModal(true)}
+              className="
+                absolute top-4 right-4
+                w-8 h-8 flex items-center justify-center
+                rounded-full bg-gray-200 hover:bg-gray-300
+                text-gray-700 hover:text-gray-900
+                transition-all duration-200
+                hover:scale-110 active:scale-95
+                shadow-md hover:shadow-lg
+                z-10
+              "
+              aria-label="게임 중단"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-5 w-5" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="flex flex-wrap items-center justify-between gap-4 pr-10">
               <div className="flex items-center gap-4">
                 <img 
                   src={characterImage} 
@@ -260,6 +290,22 @@ function GameScreen({
           </div>
         </div>
       </div>
+      
+      {/* 중도 포기 모달 */}
+      {showQuitModal && (
+        <QuitGameModal
+          selectedCharacter={selectedCharacter}
+          onGoToMain={() => {
+            setShowQuitModal(false);
+            onQuitToMain();
+          }}
+          onRestart={() => {
+            setShowQuitModal(false);
+            onQuitRestart();
+          }}
+          onCancel={() => setShowQuitModal(false)}
+        />
+      )}
     </div>
   );
 }
