@@ -49,6 +49,7 @@ function QuitGameModal({
               hover:scale-105 active:scale-95
               shadow-lg hover:shadow-xl
             "
+            aria-label="메인 화면으로 이동"
           >
             메인으로
           </button>
@@ -62,6 +63,7 @@ function QuitGameModal({
               hover:scale-105 active:scale-95
               shadow-lg hover:shadow-xl
             "
+            aria-label="현재 난이도로 다시 시작"
           >
             다시 시작
           </button>
@@ -75,6 +77,7 @@ function QuitGameModal({
               hover:scale-105 active:scale-95
               shadow-lg hover:shadow-xl
             "
+            aria-label="게임 계속하기"
           >
             게임 계속하기
           </button>
