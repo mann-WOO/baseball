@@ -37,6 +37,7 @@ function StartScreen({ onCharacterSelect }) {
                 src="/resources/sol.png" 
                 alt="SOL 캐릭터 선택" 
                 className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 object-contain drop-shadow-lg"
+                style={{ filter: 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.8))' }}
               />
               <div className="mt-4 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">

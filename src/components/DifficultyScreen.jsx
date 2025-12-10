@@ -37,6 +37,10 @@ function DifficultyScreen({ selectedCharacter, onDifficultySelect }) {
             src={characterImage} 
             alt={`${selectedCharacter} 캐릭터`} 
             className="w-32 h-32 md:w-40 md:h-40 object-contain"
+            style={selectedCharacter === CHARACTERS.SOL 
+              ? { filter: 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.8))' }
+              : {}
+            }
           />
         </div>
         

@@ -141,6 +141,10 @@ function GameScreen({
                   src={characterImage} 
                   alt={`${selectedCharacter} 캐릭터`} 
                   className="w-12 h-12 object-contain"
+                  style={selectedCharacter === CHARACTERS.SOL 
+                    ? { filter: 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.8))' }
+                    : {}
+                  }
                 />
                 <div>
                   <div className="text-lg font-bold text-gray-800">
